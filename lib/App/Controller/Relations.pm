@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-package App::Controller::Bairros;
+package App::Controller::Relations;
 
 use Mojo::Base 'Mojolicious::Controller';
 
@@ -8,7 +8,7 @@ sub index {
   my $self = shift;
 
   $self -> render (
-    json => $self -> bairros -> all
+    json => $self -> relations -> all
   );
 }
 

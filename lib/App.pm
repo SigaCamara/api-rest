@@ -1,7 +1,7 @@
 package App;
 
 use Mojo::Base 'Mojolicious';
-use App::Model::Bairros;
+use App::Model::Relations;
 use Mojo::mysql;
 
 sub startup {
@@ -21,8 +21,8 @@ sub startup {
   );
 
   $self -> helper(
-    bairros => sub {
-      state $bairros = App::Model::Bairros -> new (
+    relations => sub {
+      state $relations = App::Model::Relations -> new (
         mysql => shift -> mysql
       )
     }
@@ -36,10 +36,10 @@ sub startup {
   my $routes = $self -> routes();
 
   $routes -> get('/' => sub {
-    shift -> redirect_to('bairros')
+    shift -> redirect_to('relations')
   });
 
-  $routes -> get('/bairros') -> to ('bairros#index');
+  $routes -> get('/relations') -> to ('relations#index');
 }
 
 1;

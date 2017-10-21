@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-package App::Model::Bairros;
+package App::Model::Relations;
 
 use Mojo::Base -base;
 
@@ -8,7 +8,7 @@ has 'mysql';
 
 sub all {
   shift -> mysql -> db -> select (
-    'bairros'
+    'relations'
   ) -> hashes -> to_array;
 }
 
